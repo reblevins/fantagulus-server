@@ -33,7 +33,7 @@
 
 	// configuration =================
 
-	mongoose.connect('mongodb://10.128.0.2:80/my_database');
+	mongoose.connect('mongodb://' + argv.be_ip + ':80/my_database');
 
 	app.use('/js', express.static(__dirname + '/js'));
 	app.use('/css', express.static(__dirname + '/css'));
@@ -138,5 +138,5 @@
 	});
 
 	// listen (start app with node server.js) ======================================
-	app.listen(80, "10.128.0.3");
+	app.listen(80, argv.fe_ip);
 	console.log("App listening on port 80");
