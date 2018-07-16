@@ -13,7 +13,8 @@ var app = new Vue({
         },
         newTag: {
             name: null
-        }
+        },
+        message: null
     },
     created() {
         this.getBookmarks()
