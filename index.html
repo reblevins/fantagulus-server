@@ -27,7 +27,7 @@
     </div>
 
     <h4>Snippet</h4>
-    <textarea>{{ bookmark.snippet }}</textarea>
+    <textarea v-model="bookmark.snippet"></textarea>
     <div class="button" @click="pasteSelection">Get clipping</div>
     <div class="button" @click="saveBookmark">Save</div>
 
