@@ -32,7 +32,7 @@
     <div class="button" @click="saveBookmark">Save</div>
 
     <ul class="bookmarks">
-        <li class="bookmark" v-for="bookmarks">{{ description }}</li>
+        <li class="bookmark" v-for="(bookmark, index) in bookmarks" :key="index">{{ bookmark.description }}</li>
     </ul>
 
     <transition name="fade">
