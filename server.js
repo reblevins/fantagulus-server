@@ -35,9 +35,9 @@
 
 	mongoose.connect('mongodb://' + argv.be_ip + ':80/my_database');
 
-    	app.use('/js', express.static(__dirname + '/js'));
+	app.use('/js', express.static(__dirname + '/js'));
 	app.use('/css', express.static(__dirname + '/css'));
-   	 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+   	app.use('/bower_components', express.static(__dirname + '/bower_components'));
 	app.use(morgan('dev')); 										// log every request to the console
 	app.use(bodyParser.urlencoded({'extended':'true'})); 			// parse application/x-www-form-urlencoded
 	app.use(bodyParser.json()); 									// parse application/json
@@ -51,9 +51,9 @@
 // 	});
 
 	var Bookmark = mongoose.model('Bookmark', {
-		url : String,
+		url: String,
 		description: Boolean,
-		tags : Array,
+		tags: Array,
 		snippet: String
 	});
 
@@ -93,7 +93,7 @@
 					res.send(err)
 
 				bookmarks.push(req.body)
-				res.json(bookmarks);
+				res.json(req.body);
 			});
 		});
 
