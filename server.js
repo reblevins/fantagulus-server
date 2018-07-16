@@ -50,7 +50,7 @@
 // 		completed: Boolean
 // 	});
 
-	var Bookmark = mongoose.model('Todo', {
+	var Bookmark = mongoose.model('Bookmark', {
 		url : String,
 		description: Boolean,
 		tags : Array,
