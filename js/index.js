@@ -26,6 +26,19 @@ var app = new Vue({
         removeTag(index) {
             this.tags.splice(index, 1)
         },
+        pasteSelection() {
+            chrome.tabs.query({ active:true, windowId: chrome.windows.WINDOW_ID_CURRENT }, (tab) => {
+                console.log(tab)
+                chrome.tabs.sendMessage(tab[0].id, { method: "getSelection" }, (response) => {
+                    console.log(response)
+                    if (response && response.data) {
+                        this.clipping = response.data;
+                    } else {
+                        this.message = "Please make a selection first."
+                    }
+                })
+            })
+        },
         getBookmarks() {
             let headers = {
                 method: "GET", // *GET, POST, PUT, DELETE, etc.
