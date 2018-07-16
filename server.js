@@ -70,7 +70,7 @@
 			if (err)
 				res.send(err)
 
-			res.json(bookmarks); // return all bookmarks in JSON format
+			res.json([{ name: "something" }]); // return all bookmarks in JSON format
 		});
 	});
 
