@@ -21,7 +21,7 @@ var app = new Vue({
     },
     methods: {
         addTag: function() {
-            this.tags.push(this.newTag)
+            this.bookmark.tags.push(this.newTag)
             this.newTag = { name: null }
         },
         removeTag(index) {
@@ -51,9 +51,11 @@ var app = new Vue({
                 return response.json()
             }).then(obj => {
                 console.log(obj)
+                this.bookmarks = obj
             })
         },
         saveBookmark() {
+            console.log(this.bookmark)
             let headers = {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 headers: {
@@ -70,6 +72,23 @@ var app = new Vue({
                 console.log(obj)
             })
         },
+        // saveBookmark() {
+        //     let headers = {
+        //         method: "POST", // *GET, POST, PUT, DELETE, etc.
+        //         headers: {
+        //             "Content-Type": "application/json; charset=utf-8",
+        //             // "Content-Type": "application/x-www-form-urlencoded",
+        //         },
+        //         redirect: "follow", // manual, *follow, error
+        //         referrer: "no-referrer", // no-referrer, *client
+        //         body: JSON.stringify(this.bookmark)
+        //     }
+        //     fetch('/api/bookmarks', headers, this.bookmark).then(response => {
+        //         return response.json()
+        //     }).then(obj => {
+        //         console.log(obj)
+        //     })
+        // },
         apiCall(dest) {
             
         }

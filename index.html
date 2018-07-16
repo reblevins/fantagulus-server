@@ -31,6 +31,10 @@
     <div class="button" @click="pasteSelection">Get clipping</div>
     <div class="button" @click="saveBookmark">Save</div>
 
+    <ul class="bookmarks">
+        <li class="bookmark" v-for="bookmarks">{{ description }}</li>
+    </ul>
+
     <transition name="fade">
         <div class="message" v-if="message"><span>{{ message }}</span></div>
     </transition>
