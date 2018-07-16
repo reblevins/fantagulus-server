@@ -25,6 +25,15 @@
         </span>
         <input type="text" placeholder="type a tag and hit enter" v-model="newTag.name" v-on:keydown.enter="addTag()">
     </div>
+
+    <h4>Clipping</h4>
+    <textarea>{{ snippet }}</textarea>
+    <div class="button" @click="pasteSelection">Get clipping</div>
+    <div class="button" @click="saveBookmark">Save</div>
+
+    <transition name="fade">
+        <div class="message" v-if="message"><span>{{ message }}</span></div>
+    </transition>
 </div>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>
     <script  src="js/index.js"></script>
