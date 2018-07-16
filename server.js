@@ -138,5 +138,5 @@
 	});
 
 	// listen (start app with node server.js) ======================================
-	app.listen(8080, argv.fe_ip);
-	console.log("App listening on port 8080");
+	app.listen(80, argv.fe_ip);
+	console.log("App listening on port 80");
