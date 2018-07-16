@@ -57,6 +57,14 @@
 		snippet: String
 	});
 
+	Bookmark.create({
+		url: "google.com",
+		description: "Dude, it's google",
+		tags: [{ name: "cool" }],
+		snippet: "nothing, I got nothing"
+	}, function(err, todo) {
+	});
+
 	// routes ======================================================================
 
 	// api ---------------------------------------------------------------------
