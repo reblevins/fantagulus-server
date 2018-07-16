@@ -45,7 +45,7 @@
 	app.use(methodOverride());
 
 	// define model =================
-// 	var Todo = mongoose.model('Todo', {
+// 	var Bookmark = mongoose.model('Bookmark', {
 // 		title : String,
 // 		completed: Boolean
 // 	});
@@ -55,14 +55,6 @@
 		description: Boolean,
 		tags : Array,
 		snippet: String
-	});
-
-	Bookmark.create({
-		url: "google.com",
-		description: "Dude, it's google",
-		tags: [{ name: "cool" }],
-		snippet: "nothing, I got nothing"
-	}, function(err, bookmark) {
 	});
 
 	// routes ======================================================================
@@ -82,7 +74,7 @@
 				{ name: "something" }
 			]
 
-			res.json(return); // return all bookmarks in JSON format
+			res.json(bookmarks); // return all bookmarks in JSON format
 		});
 	});
 
@@ -91,7 +83,7 @@
 
 		// create a bookmark, information comes from AJAX request from Angular
 		Bookmark.create({
-			url : req.body.url,
+			url: req.body.url,
 			description: req.body.description,
 			tags: req.body.tags,
 			snippet: req.body.snippet
@@ -100,9 +92,11 @@
 				res.send(err);
 
 			// get and return all the bookmarks after you create another
-			Todo.find(function(err, bookmarks) {
+			Bookmark.find(function(err, bookmarks) {
 				if (err)
 					res.send(err)
+
+				bookmarks.push(req.body)
 				res.json(bookmarks);
 			});
 		});
@@ -127,14 +121,14 @@
 
 	// delete a bookmark
 	app.delete('/api/bookmarks/:bookmark_id', function(req, res) {
-		Todo.remove({
+		Bookmark.remove({
 			_id : req.params.bookmark_id
 		}, function(err, bookmark) {
 			if (err)
 				res.send(err);
 
 			// get and return all the bookmarks after you create another
-			Todo.find(function(err, bookmarks) {
+			Bookmark.find(function(err, bookmarks) {
 				if (err)
 					res.send(err)
 				res.json(bookmarks);
