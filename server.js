@@ -52,7 +52,7 @@
 
 	var Bookmark = mongoose.model('Bookmark', {
 		url: String,
-		description: Boolean,
+		description: String,
 		tags: Array,
 		snippet: String
 	});
