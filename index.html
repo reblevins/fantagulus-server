@@ -14,20 +14,20 @@
     <h1>Fan<span>tag</span>ulus</h1>
     <h3>Tag the Web!</h3>
     <h4>Url</h4>
-    <input class="text url-input" type="text" v-model="url">
+    <input class="text url-input" type="text" v-model="bookmark.url">
     <h4>Description</h4>
-    <input class="text" type="text" v-model="description">
+    <input class="text" type="text" v-model="bookmark.description">
     <h4>Tags</h4>
     <div class="tags-input">
-        <span class="tag" v-for="(tag, index) in tags">
+        <span class="tag" v-for="(tag, index) in bookmark.tags">
             {{ tag.name }}
             <span class="remove" @click="removeTag(index)">x</span>
         </span>
         <input type="text" placeholder="type a tag and hit enter" v-model="newTag.name" v-on:keydown.enter="addTag()">
     </div>
 
-    <h4>Clipping</h4>
-    <textarea>{{ snippet }}</textarea>
+    <h4>Snippet</h4>
+    <textarea>{{ bookmark.snippet }}</textarea>
     <div class="button" @click="pasteSelection">Get clipping</div>
     <div class="button" @click="saveBookmark">Save</div>
 
