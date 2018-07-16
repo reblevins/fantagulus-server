@@ -82,7 +82,7 @@
 				{ name: "something" }
 			]
 
-			res.json(bookmarks); // return all bookmarks in JSON format
+			res.json(return); // return all bookmarks in JSON format
 		});
 	});
 
