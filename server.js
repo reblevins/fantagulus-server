@@ -62,51 +62,55 @@
 		description: "Dude, it's google",
 		tags: [{ name: "cool" }],
 		snippet: "nothing, I got nothing"
-	}, function(err, todo) {
+	}, function(err, bookmark) {
 	});
 
 	// routes ======================================================================
 
 	// api ---------------------------------------------------------------------
-	// get all todos
+	// get all bookmarks
 	app.get('/api/bookmarks', function(req, res) {
 
-		// use mongoose to get all todos in the database
-		Bookmark.find(function(err, todos) {
+		// use mongoose to get all bookmarks in the database
+		Bookmark.find(function(err, bookmarks) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
 
-			res.json(todos); // return all todos in JSON format
+			let return = [
+				{ name: "something" }
+			]
+
+			res.json(bookmarks); // return all bookmarks in JSON format
 		});
 	});
 
-	// create todo and send back all todos after creation
+	// create bookmark and send back all bookmarks after creation
 	app.post('/api/bookmarks', function(req, res) {
 
-		// create a todo, information comes from AJAX request from Angular
+		// create a bookmark, information comes from AJAX request from Angular
 		Bookmark.create({
 			url : req.body.url,
 			description: req.body.description,
 			tags: req.body.tags,
 			snippet: req.body.snippet
-		}, function(err, todo) {
+		}, function(err, bookmark) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
+			// get and return all the bookmarks after you create another
+			Todo.find(function(err, bookmarks) {
 				if (err)
 					res.send(err)
-				res.json(todos);
+				res.json(bookmarks);
 			});
 		});
 
 	});
 
 	app.put('/api/bookmarks/:bookmark_id', function(req, res){
-	  return Bookmark.findById(req.params.todo_id, function(err, todo) {
+	  return Bookmark.findById(req.params.bookmark_id, function(err, bookmark) {
 
 	    bookmark.url = req.body.url,
 	    bookmark.description = req.body.description,
@@ -116,24 +120,24 @@
 	      if (err) {
 	        res.send(err);
 	      }
-	      return res.send(todo);
+	      return res.send(bookmark);
 	    });
 	  });
 	});
 
-	// delete a todo
-	app.delete('/api/todos/:todo_id', function(req, res) {
+	// delete a bookmark
+	app.delete('/api/bookmarks/:bookmark_id', function(req, res) {
 		Todo.remove({
-			_id : req.params.todo_id
-		}, function(err, todo) {
+			_id : req.params.bookmark_id
+		}, function(err, bookmark) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
+			// get and return all the bookmarks after you create another
+			Todo.find(function(err, bookmarks) {
 				if (err)
 					res.send(err)
-				res.json(todos);
+				res.json(bookmarks);
 			});
 		});
 	});
