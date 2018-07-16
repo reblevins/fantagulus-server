@@ -45,19 +45,26 @@
 	app.use(methodOverride());
 
 	// define model =================
-	var Todo = mongoose.model('Todo', {
-		title : String,
-		completed: Boolean
+// 	var Todo = mongoose.model('Todo', {
+// 		title : String,
+// 		completed: Boolean
+// 	});
+
+	var Bookmark = mongoose.model('Todo', {
+		url : String,
+		description: Boolean,
+		tags : Array,
+		snippet: String
 	});
 
 	// routes ======================================================================
 
 	// api ---------------------------------------------------------------------
 	// get all todos
-	app.get('/api/todos', function(req, res) {
+	app.get('/api/bookmarks', function(req, res) {
 
 		// use mongoose to get all todos in the database
-		Todo.find(function(err, todos) {
+		Bookmark.find(function(err, todos) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
@@ -68,12 +75,14 @@
 	});
 
 	// create todo and send back all todos after creation
-	app.post('/api/todos', function(req, res) {
+	app.post('/api/bookmarks', function(req, res) {
 
 		// create a todo, information comes from AJAX request from Angular
-		Todo.create({
-			title : req.body.title,
-			completed : false
+		Bookmark.create({
+			url : req.body.url,
+			description: req.body.description,
+			tags: req.body.tags,
+			snippet: req.body.snippet
 		}, function(err, todo) {
 			if (err)
 				res.send(err);
@@ -88,11 +97,14 @@
 
 	});
 
-	app.put('/api/todos/:todo_id', function(req, res){
-	  return Todo.findById(req.params.todo_id, function(err, todo) {
-	    todo.title = req.body.title;
-	    todo.completed = req.body.completed;
-	    return todo.save(function(err) {
+	app.put('/api/bookmarks/:bookmark_id', function(req, res){
+	  return Bookmark.findById(req.params.todo_id, function(err, todo) {
+
+	    bookmark.url = req.body.url,
+	    bookmark.description = req.body.description,
+	    bookmark.tags = req.body.tags,
+	    bookmark.snippet = req.body.snippet
+	    return bookmark.save(function(err) {
 	      if (err) {
 	        res.send(err);
 	      }
