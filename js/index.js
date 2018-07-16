@@ -64,7 +64,7 @@ var app = new Vue({
                 referrer: "no-referrer", // no-referrer, *client
                 body: JSON.stringify(this.bookmark)
             }
-            fetch('/api/bookmarks', this.bookmark).then(response => {
+            fetch('/api/bookmarks', headers, this.bookmark).then(response => {
                 return response.json()
             }).then(obj => {
                 console.log(obj)
