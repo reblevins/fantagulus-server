@@ -18,8 +18,6 @@ if (empty($_POST) && file_get_contents("php://input")) {
 	$postObject = $_POST;
 }
 
-// print_r($DBConnection);
-
 $path = explode("/", $_GET['path']);
 
 switch ($path[1]) {
