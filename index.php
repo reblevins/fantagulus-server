@@ -18,8 +18,6 @@ if (empty($_POST) && file_get_contents("php://input")) {
 	$postObject = $_POST;
 }
 
-$DBConnection = new mysqli("mysql.fantagul.us", "fantagulus", "TUKwEnDZ", "fantagul_us");
-
 // print_r($DBConnection);
 
 $path = explode("/", $_GET['path']);
