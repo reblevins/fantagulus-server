@@ -128,7 +128,7 @@ ul.icons li > * .label {
 /*}*/
 /*@media (min-width: 768px) and (max-width: 1023px) {*/
 @media (min-width: 768px) {
-	body {
+	* {
 		font-size: 15pt;
 	}
 	#main {
@@ -146,7 +146,7 @@ ul.icons li > * .label {
 }
 
 @media (min-width: 1024px) {
-	body {
+	* {
 		font-size: 10pt;
 	}
 	#main {
