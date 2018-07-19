@@ -6,5 +6,5 @@ define(MYSQL_PASSWORD, getenv('MYSQL_PASSWORD'));
 
 $DBConnection = new mysqli(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB);
 
-print_r($DBConnection);
+// print_r($DBConnection);
 ?>

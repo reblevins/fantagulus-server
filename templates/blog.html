@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<!-- <link href="https://fantagul.us/css/blog.css" rel="stylesheet"> -->
+	<link href="../css/blog.css" rel="stylesheet">
+</head>
+<body>
+<div id="main">
+	<div id="header">
+		<a href="#" class="author"><img :src="blogMeta.avatar"></a>
+		<h1 id="blog_title">{{ blogMeta.title }}</h1>
+		<h2 id="blog_sub_title">{{ blogMeta.subTitle }}</h2>
+	</div>
+	<article v-for="(post, index) in posts" :id="'post_' + post.id" class="mini-post">
+		<header>
+			<h3><a href="single.html">{{ post.title }}</a></h3>
+			<time class="published" datetime="2015-10-17">{{ post.published_date }}</time>
+		</header>
+		<a href="single.html" class="image"><img :src="post.image"></a>
+		<div class="excerpt">
+			{{ post.excerpt }}
+		</div>
+	</article>
+	<section id="footer">
+		<ul class="icons">
+			<li><a href="#" class="fab fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="fab fa-facebook"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="fab fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="fab fa-rss"><span class="label">RSS</span></a></li>
+			<li><a href="#" class="fab fa-envelope"><span class="label">Email</span></a></li>
+		</ul>
+		<p class="copyright">© Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+	</section>
+</div><!-- /#main -->
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="blog.js"></script>
+</body>
+</html>
