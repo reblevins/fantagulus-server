@@ -26,7 +26,7 @@ img {
 	width: 100%;
 }
 #header a.author {
-    width: 13em;
+    /*width: 13em;*/
     overflow: hidden;
     display: block;
 }
@@ -132,7 +132,7 @@ ul.icons li > * .label {
 		font-size: 15pt;
 	}
 	#main {
-		grid-template-columns: 13em 1fr;
+		grid-template-columns: 10em 1fr;
 		padding: 2em;
 	    grid-template-rows: 22em;
 	}
