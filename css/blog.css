@@ -189,15 +189,30 @@ ul.icons li > * .label {
 }
 @media (min-width: 768px) {
 	* {
-		font-size: 15pt;
+		font-size: 12pt;
 	}
 	#main {
-		grid-template-columns: 10em 1fr;
-		padding: 2em;
-	    grid-template-rows: 1fr 1fr 1fr 4em;
+		padding: 4em 2em;
+        margin-top: 0;
 	}
+    #header {
+        left: 0;
+        width: 32%;
+        padding: 0 2.5em;
+        top: 4.5em;
+    }
+    #header a.author {
+        margin: 0 0 2em 0;
+        width: 100%;
+        height: auto;
+    }
+    .author img {
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
 	article {
-		grid-column: 2;
+        margin-left: 30%;
 	}
 	#footer {
 		grid-column: 2;
@@ -207,26 +222,34 @@ ul.icons li > * .label {
 
 @media (min-width: 1024px) {
 	* {
-		font-size: 10pt;
+		/*font-size: 10pt;*/
 	}
 	#main {
-		width: auto;
-		grid-template-columns: 20em 1fr;
-		grid-template-rows: 1fr 1fr 1fr 4em;
         max-width: 80%;
+        padding: 4em 0;
 	}
-	#header a.author {
-	    width: 8em;
-	}
-	article, #footer {
-		margin: 0 0 2em 22em;
-	}
-}
-@media (min-width: 1025px) {
-    #main {
-        max-width: 60%;
+    #header {
+        width: 17.7em;
+        left: 6em;
     }
+	#header a.author {
+	    width: 100%;
+	}
+    #header h1 {
+        font-size: 1.7em;
+    }
+    #header h2 {
+        /*font-size: 1.1em;*/
+    }
+	article, #footer {
+		margin: 0 0 2em 17em;
+	}
 }
+/*@media (min-width: 1025px) {
+    #main {
+        max-width: 80%;
+    }
+}*/
 
 /* Post */
 

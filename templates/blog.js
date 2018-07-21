@@ -24,7 +24,7 @@ var app = new Vue({
 	computed: {
 		headerClass() {
 			let className = null
-			if ((this.mainRect.width < 568 && this.mainRect.top < 34) || (this.mainRect.width > 568 && this.mainRect.top < 57)) {
+			if ((this.mainRect.width < 568 && this.mainRect.top < 34) || (this.mainRect.width > 568 && this.mainRect.width < 700 && this.mainRect.top < 57)) {
 				className = "small"
 			}
 			return className
