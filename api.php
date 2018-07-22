@@ -1,5 +1,7 @@
 <?php
 require_once 'includes/startup.inc';
+// print_r($GLOBALS['database']->conn);
+// exit;
 
 $json = array();
 // parse the post header before loading shared.inc
@@ -20,7 +22,8 @@ if (empty($_POST) && file_get_contents("php://input")) {
 switch ($path[1]) {
 	case "v1":
 	case "v2":
-		require_once $path[1] . "/api.php";
+		// require_once $path[1] . "/api.php";
+		require_once "v1/api.php";
 		break;
 	default:
 		http_response_code(404);
@@ -28,6 +31,6 @@ switch ($path[1]) {
 		die();
 }
 
-mysqli_close($DBConnection);
+mysqli_close($db);
 echo json_encode($json);
 ?>

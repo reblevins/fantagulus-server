@@ -1,16 +1,24 @@
-* {
-    font-family: 'Raleway', sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900");
+
+html, body {
+    overflow: scroll;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
 	/*font-size: 10pt;*/
 	font-size: 12pt;
-	background-color: rgb(244, 244, 244)
+	background-color: rgb(244, 244, 244);
+    line-height: 1.5;
 }
 /*@media (min-width: 320px) {*/
 #main {
 	/*display: grid;*/
 	grid-template-columns: 1fr;
     width: auto;
-    padding: 1em;
-    grid-gap: 2em 1em;
+    padding: 1em 0;
     color: #646464;
     margin: 12em auto 0 auto;
 }
@@ -18,6 +26,7 @@ a {
 	color: inherit;
 }
 h1, h2, h3, h4 {
+    font-family: 'Raleway', sans-serif;
 	color: #3c3b3b;
 	text-transform: uppercase;
 }
@@ -27,7 +36,11 @@ h1 {
 img {
 	width: 100%;
 }
+p {
+    margin: 0 0 2em 0;
+}
 #header {
+    background-color: rgb(244, 244, 244);
     position: fixed;
     padding: 1em 2em;
     top: 0;
@@ -41,11 +54,11 @@ img {
     grid-gap: 0 1.5em;
     height: 12em;
 }
-#header, #header.small h1, #header.small h2, #header a.author {
+#header, #header.small h1, #header.small h2, #header div.author {
 /*#header {*/
     transition: all 0.6s;
 }
-/*#header.small h1, #header.small h2, #header a.author {
+/*#header.small h1, #header.small h2, #header div.author {
     transition: all 0s;
 }*/
 #header.small {
@@ -60,11 +73,11 @@ img {
 #header.small h2 {
     font-size: 0.5em;
 }
-#header.small a.author {
+#header.small div.author {
     /*width: 9%;*/
     margin: 0 1em 0 0;
 }
-#header a.author {
+#header div.author {
     /*width: 19%;*/
     height: 90%;
     overflow: hidden;
@@ -116,6 +129,9 @@ header h3 a {
 	border-bottom: 0;
 	text-decoration: none;
 }
+.mini-post {
+    cursor: pointer;
+}
 .mini-post header .published {
     display: block;
     font-family: "Raleway", Helvetica, sans-serif;
@@ -132,8 +148,41 @@ header h3 a {
 .excerpt {
     padding: 1.25em;
 }
+
+/* Post */
+.post {
+
+}
+.post > header {
+    padding: 3em 1.5em 0.5em 1.5em;
+}
+
+.post > header .title {
+    margin: 0 0 2em 0;
+    padding: 0;
+    text-align: center;
+}
+.post > header .title h2 {
+    font-weight: 900;
+    font-size: 1.1em;
+}
+
+.post .body {
+    padding: 0 1.5em 0.5em 1.5em;
+}
+
+header p {
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-size: 0.7em;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    line-height: 2.5;
+    margin-top: -1em;
+    text-transform: uppercase;
+}
+
 #footer {
-	grid-column: 1;
+	text-align: center;
 }
 #footer .icons {
     color: #aaaaaa;
@@ -177,14 +226,19 @@ ul.icons li > * .label {
     #header {
         /*position: initial;*/
     }
-    #header a.author {
+    #header div.author {
         margin-right: 2em;
     }
-    #header.small a.author {
+    #header.small div.author {
         width: 5%;
     }
     #header h1 {
         margin-top: 4.5em;
+    }
+}
+@media (min-width: 731px) {
+    #main {
+        margin-top: 4em;
     }
 }
 @media (min-width: 768px) {
@@ -195,16 +249,8 @@ ul.icons li > * .label {
 		padding: 4em 2em;
         margin-top: 0;
 	}
-    #header {
-        left: 0;
-        width: 32%;
-        padding: 0 2.5em;
-        top: 4.5em;
-    }
-    #header a.author {
-        margin: 0 0 2em 0;
-        width: 100%;
-        height: auto;
+    #header.small {
+        padding: 1em 2.5em;
     }
     .author img {
         margin: 0;
@@ -212,7 +258,7 @@ ul.icons li > * .label {
         height: auto;
     }
 	article {
-        margin-left: 30%;
+        /*margin-left: 30%;*/
 	}
 	#footer {
 		grid-column: 2;
@@ -229,21 +275,36 @@ ul.icons li > * .label {
         padding: 4em 0;
 	}
     #header {
-        width: 17.7em;
-        left: 6em;
+            width: 17.3em;
+            left: 6em;
+            padding: 0 2.5em;
+            top: 4.2em;
+            height: auto;
+            border: none;
     }
-	#header a.author {
+    #header h1 {
+        margin-top: 1em;
+    }
+    #header div.author {
+        margin: 0 0 2em 0;
+        width: 100%;
+        height: auto;
+    }
+	/*#header div.author {
 	    width: 100%;
 	}
     #header h1 {
         font-size: 1.7em;
-    }
+    }*/
     #header h2 {
         /*font-size: 1.1em;*/
     }
 	article, #footer {
 		margin: 0 0 2em 17em;
 	}
+    .post > header {
+        padding: 2em 1.5em 0.5em 1.5em;
+    }
 }
 /*@media (min-width: 1025px) {
     #main {
@@ -252,7 +313,7 @@ ul.icons li > * .label {
 }*/
 
 /* Post */
-
+/*
     .post {
         padding: 3em 3em 1em 3em ;
         background: #ffffff;
@@ -286,17 +347,15 @@ ul.icons li > * .label {
                     font-weight: 900;
                     font-size: 1.5em;
                 }
-
+*/
                 .post > header .title > :last-child {
                     margin-bottom: 0;
                 }
 
             .post > header .meta {
-                padding: 3.75em 3em 1.75em 3em ;
-                border-left: solid 1px rgba(160, 160, 160, 0.3);
                 min-width: 17em;
-                text-align: right;
-                width: 17em;
+                text-align: center;
+                margin: 0 0 2em 0;
             }
 
                 .post > header .meta > * {
@@ -319,18 +378,20 @@ ul.icons li > * .label {
                     white-space: nowrap;
                 }
 
-        .post > a.image.featured {
+        .post > span.image.featured {
+            margin: 0 0 1.5em 0;
             overflow: hidden;
+            display: inline-block;
         }
 
-            .post > a.image.featured img {
+            .post > span.image.featured img {
                 -moz-transition: -moz-transform 0.2s ease-out;
                 -webkit-transition: -webkit-transform 0.2s ease-out;
                 -ms-transition: -ms-transform 0.2s ease-out;
                 transition: transform 0.2s ease-out;
             }
 
-            .post > a.image.featured:hover img {
+            .post > span.image.featured:hover img {
                 -moz-transform: scale(1.05);
                 -webkit-transform: scale(1.05);
                 -ms-transform: scale(1.05);
@@ -356,6 +417,8 @@ ul.icons li > * .label {
             }
 
             .post > footer .stats {
+                width: 100%;
+                text-align: center;
                 cursor: default;
                 list-style: none;
                 padding: 0;
@@ -388,7 +451,7 @@ ul.icons li > * .label {
                             color: rgba(160, 160, 160, 0.3);
                             margin-right: 0.75em;
                         }
-
+/*
         @media screen and (max-width: 980px) {
 
             .post {
@@ -542,3 +605,4 @@ ul.icons li > * .label {
                     }
 
         }
+*/
