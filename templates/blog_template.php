@@ -29,7 +29,7 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 				<h3><?php $post['post_title'] ?></h3>
 				<time class="published" datetime="<?php echo $post['date_published'] ?>"><?php echo $post['date_published'] ?></time>
 			</header>
-			<img :src="<?php echo $imageUrlThumb . $post['post_image']['path'] ?>">
+			<img src="<?php echo $imageUrlThumb . $post['post_image']['path'] ?>">
 			<div class="excerpt">
 				<?php echo $post['post_excerpt'] ?>
 			</div>
@@ -45,7 +45,7 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 				<p><?php echo $currentPost['post_sub_title'] ?></p>
 			</div>
 			<div class="meta">
-				<time class="published" :datetime="<?php echo $currentPost['date_published'] ?>"><?php echo $currentPost['date_published'] ?></time>
+				<time class="published" datetime="<?php echo $currentPost['date_published'] ?>"><?php echo $currentPost['date_published'] ?></time>
 			</div>
 		</header>
 		<span class="image featured"><img src="<?php echo $currentPost['post_image'] ?>" alt=""></span>
