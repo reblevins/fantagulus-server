@@ -3,7 +3,7 @@ $blog = $postObject['blog'];
 $posts = $postObject['posts'];
 $currentPost = (!empty($postObject['current_post'])) ? $postObject['current_post'] : null;
 $postTemplate = ($postObject['template'] == "post_template");
-$imageUrlThumb = 'http://res.cloudinary.com/reblevins/image/upload/c_crop,g_custom/c_scale,w_500/';
+$imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_custom/c_scale,w_500/';
 ?><html>
 <head>
 	<title><?php echo $blog['title']; ?></title>
