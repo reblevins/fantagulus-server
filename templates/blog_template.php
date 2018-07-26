@@ -26,7 +26,7 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 		foreach ($posts as $key => $post) { ?>
 		<article>
 			<header>
-				<h3><?php $post['post_title'] ?></h3>
+				<h3><?php echo $post['post_title'] ?></h3>
 				<time class="published" datetime="<?php echo $post['date_published'] ?>"><?php echo $post['date_published'] ?></time>
 			</header>
 			<img src="<?php echo $imageUrlThumb . $post['post_image']['path'] ?>">
