@@ -32,8 +32,11 @@ $blogName = $path[2];
 
 switch ($path[3]) {
 case 'blog_template':
-	$postObject['template'] = "blog_template";
-	require realpath( $_SERVER["DOCUMENT_ROOT"] . '/templates/blog_template.php');
+	// $postObject['template'] = "blog_template";
+	ob_start();
+	include realpath($_SERVER["DOCUMENT_ROOT"] . '/templates/blog_template.php');
+	$html = ob_get_clean();
+	echo $html;
 	exit;
 
 case 'post_template':

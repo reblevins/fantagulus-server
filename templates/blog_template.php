@@ -1,6 +1,8 @@
 <?php
-$blog = $postObject['blog'];
-$posts = $postObject['posts'];
+// $blog = $postObject['blog'];
+$blog = $postObject->blog;
+// $posts = $postObject['posts'];
+$posts = $postObject->posts;
 $currentPost = (!empty($postObject['current_post'])) ? $postObject['current_post'] : null;
 $postTemplate = ($postObject['template'] == "post_template");
 $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_custom/c_scale,w_500/';
@@ -17,7 +19,7 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 <body>
 <div id="main" ref="main">
 	<div id="header">
-		<div href="#" class="author"><img src="<?php echo $imageUrlThumb . $blog['avatar']['path'] ?>"></div>
+		<?php if (!empty($blog['avatar']['path'])) { ?><div href="#" class="author"><img src="<?php echo $imageUrlThumb . $blog['avatar']['path'] ?>"></div><?php } ?>
 		<h1 id="blog_title"><?php echo $blog['title'] ?></h1>
 		<h2 id="blog_sub_title"><?php echo $blog['subTitle'] ?></h2>
 	</div>
@@ -27,9 +29,9 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 		<article>
 			<header>
 				<h3><?php echo $post['post_title'] ?></h3>
-				<time class="published" datetime="<?php echo $post['date_published'] ?>"><?php echo $post['date_published'] ?></time>
+				<time class="published" datetime="<?php echo formatDate($post['date_published']) ?>"><?php echo formatDate($post['date_published'], "l, F d, Y") ?></time>
 			</header>
-			<img src="<?php echo $imageUrlThumb . $post['post_image']['path'] ?>">
+			<?php if (!empty($post['post_image']['path'])) { ?><img src="<?php echo $imageUrlThumb . $post['post_image']['path'] ?>"><?php } ?>
 			<div class="excerpt">
 				<?php echo $post['post_excerpt'] ?>
 			</div>
@@ -45,10 +47,10 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 				<p><?php echo $currentPost['post_sub_title'] ?></p>
 			</div>
 			<div class="meta">
-				<time class="published" datetime="<?php echo $currentPost['date_published'] ?>"><?php echo $currentPost['date_published'] ?></time>
+				<time class="published" datetime="<?php echo formatDate($currentPost['date_published']) ?>"><?php echo formatDate($currentPost['date_published'], "l, F d, Y") ?></time>
 			</div>
 		</header>
-		<span class="image featured"><img src="<?php echo $currentPost['post_image'] ?>" alt=""></span>
+		<?php if (!empty($currentPost['post_image']['secure'])) { ?><span class="image featured"><img src="<?php echo $currentPost['post_image']['secure'] ?>" alt=""></span><?php }?>
 		<div class="body" v-html="echo $currentPost['post_full_text']"></div>
 		<!-- <footer>
 			<ul class="stats">
