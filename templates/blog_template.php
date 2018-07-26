@@ -29,7 +29,7 @@ $imageUrlThumb = 'http://res.cloudinary.com/reblevins/image/upload/c_crop,g_cust
 				<h3><?php $post['post_title'] ?></h3>
 				<time class="published" datetime="<?php echo $post['date_published'] ?>"><?php echo $post['date_published'] ?></time>
 			</header>
-			<img :src="<?php echo echo $imageUrlThumb . $post['post_image']['path'] ?>">
+			<img :src="<?php echo $imageUrlThumb . $post['post_image']['path'] ?>">
 			<div class="excerpt">
 				<?php echo $post['post_excerpt'] ?>
 			</div>
