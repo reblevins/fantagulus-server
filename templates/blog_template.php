@@ -8,8 +8,11 @@ $postTemplate = ($postObject['template'] == "post_template");
 	<title><?php echo $blog['title']; ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> -->
+	<link href="https://fantagul.us/css/blog.css" rel="stylesheet">
 	<!-- <link href="/css/blog.css" rel="stylesheet"> -->
-	<style>
+	<!-- <style>
 		@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900");
 
 		html, body {
@@ -421,11 +424,11 @@ $postTemplate = ($postObject['template'] == "post_template");
                             color: rgba(160, 160, 160, 0.3);
                             margin-right: 0.75em;
                         }
-	</style>
+	</style> -->
 </head>
 <body>
 <div id="main" ref="main">
-	<div id="header" :class="headerClass">
+	<div id="header">
 		<div href="#" class="author"><img src="<?php echo $blog['avatar'] ?>"></div>
 		<h1 id="blog_title"><?php echo $blog['title'] ?></h1>
 		<h2 id="blog_sub_title"><?php echo $blog['subTitle'] ?></h2>
