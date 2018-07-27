@@ -1,16 +1,18 @@
 <?php
 $blog = $postObject['blog'];
 $posts = $postObject['posts'];
-$currentPost = (!empty($postObject['current_post'])) ? $postObject['current_post'] : null;
-$postTemplate = ($postObject['template'] == "post_template");
+// $currentPost = (!empty($postObject['current_post'])) ? $postObject['current_post'] : null;
+$postTemplate = (!empty($currentPost));
+$imageUrl = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_custom/';
 $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_custom/c_scale,w_500/';
-?><html>
+?>
+<html>
 <head>
 	<title><?php echo $blog['title']; ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-	<!-- <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<link href="https://fantagul.us/css/blog.css" rel="stylesheet">
 	<!-- <link href="/css/blog.css" rel="stylesheet"> -->
 </head>
@@ -48,8 +50,8 @@ $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_cus
 				<time class="published" datetime="<?php echo formatDate($currentPost['date_published']) ?>"><?php echo formatDate($currentPost['date_published'], "l, F d, Y") ?></time>
 			</div>
 		</header>
-		<?php if (!empty($currentPost['post_image']['secure'])) { ?><span class="image featured"><img src="<?php echo $currentPost['post_image']['secure'] ?>" alt=""></span><?php }?>
-		<div class="body" v-html="echo $currentPost['post_full_text']"></div>
+		<?php if (!empty($currentPost['post_image']['path'])) { ?><span class="image featured"><img src="<?php echo $imageUrl . $currentPost['post_image']['path'] ?>" alt=""></span><?php }?>
+		<div class="body"><?php echo $currentPost['post_full_text'] ?></div>
 		<!-- <footer>
 			<ul class="stats">
 				<li><a href="#">General</a></li>

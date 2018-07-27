@@ -6,19 +6,21 @@ function formatDate($date, $format = 'Y-m-d') {
 
 function convertHTMLToLink($html, $arch = 'mac') {
 	// $command = escapeshellarg('echo -n "' . $html . '" | lzma -9 | base64 | printf "https://itty.bitty.site/#/%s\n" "$(cat -)"');
-	$file = $_SERVER["DOCUMENT_ROOT"] . '/tmp/json.txt';
-	echo $file;
+	$file = $_SERVER["DOCUMENT_ROOT"] . '/tmp/file.' . time() . '.txt';
+	// echo $file;
 	$handle = fopen($file, 'w') or die('Cannot open file:  ' . $file);
 	fwrite($handle, $html);
 	fclose($handle);
-	exec('lzma -9 ' . $file, $output);
-	print_r($output);
+	exec('/usr/local/bin/lzma -9 ' . $file, $output, $error);
+	// print_r($output);
+	// echo $error;
 	
-	$command2 = 'base64 ' . $file . '.lzma';
-	$output2 = shell_exec($command2);
-	echo $output2;
+	$command2 = '/usr/bin/base64 ' . $file . '.lzma';
+	exec($command2, $output2, $error2);
+	// echo $error2;
+	// print_r($output2);
 	// unlink($file);
-	// unlink($file . '.lzma');
-	return $myvar;
+	unlink($file . '.lzma');
+	return $output2[0];
 }
 ?>

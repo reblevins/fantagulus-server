@@ -51,7 +51,8 @@ var app = new Vue({
 	},
 	methods: {
 		fetchData() {
-			fetch('/api/v1/' + BLOGNAME + '/blog').then(response => {
+			// fetch('/api/v1/' + BLOGNAME + '/blog').then(response => {
+			fetch(API_LINK).then(response => {
 				return response.json()
 			}).then(obj => {
 				console.log(obj)

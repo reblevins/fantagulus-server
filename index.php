@@ -10,9 +10,6 @@ switch ($path[0]) {
 		require_once "templates/blog.php";
 		break;
 
-	case "":
-		echo "Thanks!";
-
 	default:
 		http_response_code(404);
 		include 'includes/code_404.php';
