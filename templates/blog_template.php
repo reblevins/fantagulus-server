@@ -1,8 +1,6 @@
 <?php
-// $blog = $postObject['blog'];
-$blog = $postObject->blog;
-// $posts = $postObject['posts'];
-$posts = $postObject->posts;
+$blog = $postObject['blog'];
+$posts = $postObject['posts'];
 $currentPost = (!empty($postObject['current_post'])) ? $postObject['current_post'] : null;
 $postTemplate = ($postObject['template'] == "post_template");
 $imageUrlThumb = 'https://res.cloudinary.com/reblevins/image/upload/c_crop,g_custom/c_scale,w_500/';
