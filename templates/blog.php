@@ -59,27 +59,102 @@
 	</section>
 </div><!-- /#main -->
 
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDW5hu9qmou0Qlfez6W08Xm69tB6IsLHFE",
-    authDomain: "fantagulus.firebaseapp.com",
-    databaseURL: "https://fantagulus.firebaseio.com",
-    projectId: "fantagulus",
-    storageBucket: "fantagulus.appspot.com",
-    messagingSenderId: "68736317493"
-  };
-  firebase.initializeApp(config);
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
 	BLOGNAME = "<?php echo $path[1]; ?>";
+	API_LINK = "<?php echo $link ?>";
 </script>
-<script src="/templates/blog.js"></script>
+<!-- <script src="/templates/blog.js"></script> -->
 <!-- <script src="https://fantagul.us/templates/blog.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+var app = new Vue({
+	el: '#main',
+	data() {
+		return {
+			currentRoute: '/',
+			blog: {
+				avatar: null,
+				title: null,
+				subTitle: null,
+				author: null
+			},
+			posts: [],
+			currentPost: null,
+			mainRect: null
+		}
+	},
+	created() {
+		this.fetchData()
+
+		console.log(document.location)
+		
+		let main = document.getElementById("main")
+		this.mainRect = main.getBoundingClientRect()
+
+		window.addEventListener('scroll', (e) => {
+			main = document.getElementById("main")
+			this.mainRect = main.getBoundingClientRect()
+		})
+		window.addEventListener('popstate', () => {
+			this.currentRoute = window.location.pathname
+		})
+	},
+	computed: {
+		headerClass() {
+			let className = null
+			console.log(this.mainRect.width)
+			if ((this.mainRect.width < 568 && this.mainRect.top < 34) || (this.mainRect.width > 568 && this.mainRect.width < 700 && this.mainRect.top < 57)) {
+				className = "small"
+			}
+			if (this.mainRect.width > 700 && this.mainRect.width < 797) {
+				className = "small"
+			}
+			return className
+		}
+	},
+	methods: {
+		fetchData() {
+			// fetch('/api/v1/' + BLOGNAME + '/blog').then(response => {
+			fetch("<?php echo $link ?>").then(response => {
+				return response.json()
+			}).then(obj => {
+				console.log(obj)
+				this.blog = obj.blog
+				// this.posts = obj.posts
+			}).catch(err => {
+				console.log(err)
+			})
+			fetch('/api/v1/' + BLOGNAME + '/posts').then(response => {
+				return response.json()
+			}).then(obj => {
+				console.log(obj)
+				this.posts = obj.posts
+				// this.posts = obj.posts
+			}).catch(err => {
+				console.log(err)
+			})
+		},
+		formatDate(date, format) {
+			let dateObj = new Date(date)
+			if (format == 'human') {
+				return DAYS_OF_WEEK[dateObj.getDay()] + ', ' + MONTH_ARRAY[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear()
+			} else {
+				return dateObj.getFullYear() + '-' + (dateObj.getMonth() + 1).toString().padStart(2, "0") + '-' + dateObj.getDate().toString().padStart(2, "0") 
+			}
+		},
+		loadPost(index) {
+			event.preventDefault()
+	        this.currentRoute = this.href
+	        window.history.pushState(
+				null,
+				routes[this.href],
+				this.href
+	        )
+			this.currentPost = this.posts[index]
+			console.log(this.currentPost)
+		}
+	}
+})
+</script>
 </body>
 </html>
