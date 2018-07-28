@@ -43,6 +43,11 @@ case 'posts':
 	}
 	break;
 
+case 'upload':
+	// \Cloudinary\Uploader::unsigned_upload("sample.jpg", "unsigned_1", 
+    // array("cloud_name" => "demo"));
+	break;
+
 default:
 	# code...
 	break;
