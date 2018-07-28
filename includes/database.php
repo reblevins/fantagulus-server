@@ -61,7 +61,7 @@ class Database {
                 $parameterReferences[] = &$parameters[$index];
             }
             if (!$executeOnly) {
-                $statement = $GLOBALS['gDBConnection']->prepare($query);
+                $statement = $this->conn->prepare($query);
             } else {
                 $statement = $query;
                 $query = $statementQuery;
@@ -75,10 +75,10 @@ class Database {
             $resultSet['parameters'] = $parameterReferences;
         }
         $resultSet['query'] = $query;
-        $resultSet['sql_error'] = $GLOBALS['gDBConnection']->error;
-        $resultSet['sql_error_number'] = $GLOBALS['gDBConnection']->errno;
-        $resultSet['affected_rows'] = $GLOBALS['gDBConnection']->affected_rows;
-        $resultSet['insert_id'] = $GLOBALS['gDBConnection']->insert_id;
+        $resultSet['sql_error'] = $this->conn->error;
+        $resultSet['sql_error_number'] = $this->conn->errno;
+        $resultSet['affected_rows'] = $this->conn->affected_rows;
+        $resultSet['insert_id'] = $this->conn->insert_id;
         if (!$prepareOnly && !$executeOnly && is_object($statement) && get_class($statement) == "mysqli_stmt") {
             $statement->close();
         }

@@ -5,3 +5,5 @@ templates/html5up-future-imperfect
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/vendor/
+composer

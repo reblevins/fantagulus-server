@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ezyang/htmlpurifier": "^4.10",
+        "cloudinary/cloudinary_php": "^1.10"
+    }
+}
