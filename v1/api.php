@@ -36,6 +36,9 @@ switch ($path[3]) {
 // 	$link = "https://itty.bitty.site/#/" . $link;
 // 	exit;
 
+case 'edit':
+	include realpath($_SERVER['DOCUMENT_ROOT'] . '/blog_data/edit.blog.php');
+
 case 'blog_template':
 	// $postObject['template'] = "blog_template";
 	foreach ($postObject['posts'] as $key => $currentPost) {

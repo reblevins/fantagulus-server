@@ -3,9 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import db from './database'
 
 Vue.config.productionTip = false
 
+Vue.prototype.$db = db
+Vue.prototype.$moment = require("moment")
 Vue.prototype.$apiUrl = document.location.hostname
 // Vue.prototype.$apiUrl = () => {
 // 	let host = document.location.hostname
@@ -13,6 +16,7 @@ Vue.prototype.$apiUrl = document.location.hostname
 // 	path = path.split('/')
 // 	return host + '/api/v1/' + path[0]
 // }
+Vue.prototype.$md5 = require('md5')
 
 Vue.filter('formateDate', (value, format) => {
 	if (!value) return

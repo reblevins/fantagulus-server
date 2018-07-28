@@ -6,23 +6,23 @@ import Post from '@/components/Post'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '',
-      children: [
-        {
-          path: '/:blogName',
-          name: 'Home',
-          component: Home,
-          props: true,
-        },
-        {
-          path: ':id',
-          name: 'Post',
-          component: Post,
-          props: true
-        }
-      ]
-    }
-  ]
+	routes: [
+		{
+			path: '',
+			children: [
+				{
+					path: '/:blogName',
+					name: 'Home',
+					component: Home,
+					props: true,
+				},
+				{
+					path: ':id',
+					name: 'Post',
+					component: Post,
+					props: true
+				}
+			]
+		}
+	]
 })
