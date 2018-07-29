@@ -39,6 +39,35 @@ switch ($path[3]) {
 case 'edit':
 	include realpath($_SERVER['DOCUMENT_ROOT'] . '/blog_data/edit.blog.php');
 
+case 'publish':
+	$blogDir = $_SERVER["DOCUMENT_ROOT"] . '/blog_data/' . $blogName;
+	if (!file_exists($blogDir)) {
+		if(!mkdir($blogDir)) {
+			$json['status'] = "error";
+			$json['message'] = "Problem creating directory: " . $blogDir;
+			break;
+		}
+	}
+	$file = $_SERVER["DOCUMENT_ROOT"] . '/blog_data/' . $blogName . '/index.php';
+	$handle = fopen($file, 'w+');
+	if (!$handle) {
+		$json['status'] = "error";
+		$json['message'] = "Problem creating file: " . $file;
+		break;
+	}
+	ob_start();
+	include realpath($_SERVER["DOCUMENT_ROOT"] . '/templates/blog_template.php');
+	$html = ob_get_clean();
+	if (!fwrite($handle, $html)) {
+		$json['status'] = "error";
+		$json['message'] = "Problem writing to file: " . $file;
+		break;
+	}
+	fclose($handle);
+	$json['status'] = "success";
+	$json['post'] = $postObject;
+	break;
+
 case 'blog_template':
 	// $postObject['template'] = "blog_template";
 	foreach ($postObject['posts'] as $key => $currentPost) {

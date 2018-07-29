@@ -1,15 +1,15 @@
 <template>
 <div id="app">
     <div id="main" ref="main">
-        <div id="header" :class="headerClass">
+        <!-- <div id="header" :class="headerClass">
             <div href="#" class="author"><img :src="blog.avatar"></div>
             <h1 id="blog_title">{{ blog.title }}</h1>
             <h2 id="blog_sub_title">{{ blog.subTitle }}</h2>
-        </div>
+        </div> -->
 
         <router-view />
 
-        <section id="footer">
+        <!-- <section id="footer">
             <ul class="icons">
                 <li><a href="#" class="fab fa-twitter"><span class="label">Twitter</span></a></li>
                 <li><a href="#" class="fab fa-facebook"><span class="label">Facebook</span></a></li>
@@ -18,7 +18,7 @@
                 <li><a href="#" class="fab fa-envelope"><span class="label">Email</span></a></li>
             </ul>
             <p class="copyright">© Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
-        </section>
+        </section> -->
     </div><!-- /#main -->
 </div>
 </template>
@@ -39,7 +39,7 @@ export default {
         }
     },
     created() {
-        this.fetchData()
+        // this.fetchData()
     },
     watch: {
         '$refs.main'(newVal) {

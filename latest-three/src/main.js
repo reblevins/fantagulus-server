@@ -5,28 +5,31 @@ import App from './App'
 import router from './router'
 import db from './database'
 
+import './Functions'
+
 Vue.config.productionTip = false
 
 Vue.prototype.$db = db
 Vue.prototype.$moment = require("moment")
 Vue.prototype.$apiUrl = document.location.hostname
-// Vue.prototype.$apiUrl = () => {
-// 	let host = document.location.hostname
-// 	let path = document.location.pathname
-// 	path = path.split('/')
-// 	return host + '/api/v1/' + path[0]
-// }
+Vue.prototype.$apiUrl = () => {
+	let host = document.location.hostname
+	let path = document.location.pathname
+	path = path.split('/')
+	return host + '/api/v1/'
+}
 Vue.prototype.$md5 = require('md5')
 
 Vue.filter('formateDate', (value, format) => {
+  let moment = require("moment")
 	if (!value) return
 
-	let dateObj = new Date(date)
-    if (format == 'human') {
-        return DAYS_OF_WEEK[dateObj.getDay()] + ', ' + MONTH_ARRAY[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear()
-    } else {
-        return dateObj.getFullYear() + '-' + (dateObj.getMonth() + 1).toString().padStart(2, "0") + '-' + dateObj.getDate().toString().padStart(2, "0") 
-    }
+	let dateObj = moment(value)
+  if (format == 'human') {
+      return dateObj.format('dddd, MMMM Do YYYY')
+  } else {
+      return dateObj.format('YYYY-MM-DD')
+  }
 })
 
 /* eslint-disable no-new */

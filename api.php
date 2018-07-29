@@ -21,9 +21,11 @@ if (empty($_POST) && file_get_contents("php://input")) {
 	$postObject = $_POST;
 }
 
-include 'includes/sample_data.php';
+// include 'includes/sample_data.php';
 
 // print_r($postObject);
+
+// print_r($path);
 
 switch ($path[1]) {
 	case "v1":
@@ -32,11 +34,13 @@ switch ($path[1]) {
 		require_once "v1/api.php";
 		break;
 	default:
-		http_response_code(404);
-		include 'includes/code_404.php';
-		die();
+		// http_response_code(404);
+		// include 'includes/code_404.php';
+		// die();
+		break;
 }
 
 mysqli_close($db);
 echo json_encode($json);
+exit;
 ?>

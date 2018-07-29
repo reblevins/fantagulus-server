@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 $path = explode("/", $_GET['path']);
 
 switch ($path[0]) {
